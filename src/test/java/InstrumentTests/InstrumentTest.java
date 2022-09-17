@@ -1,3 +1,5 @@
+package InstrumentTests;
+
 import instruments.*;
 import jdk.jfr.StackTrace;
 import org.junit.Before;
@@ -13,8 +15,8 @@ public class InstrumentTest {
 
     @Before
     public void setUp() {
-        drum = new Drum("Oak", "Black", InstrumentType.PERCUSSION, "BOOM BOOM BANG BANG", DrumType.SNARE);
-        guitar = new Guitar("Mahogany", "Orange and Black", InstrumentType.STRING, "Twang", GuitarType.ELECTRIC);
+        drum = new Drum(200.00,"Oak", "Black", InstrumentType.PERCUSSION, "BOOM BOOM BANG BANG", DrumType.SNARE);
+        guitar = new Guitar(500.00,"Mahogany", "Orange and Black", InstrumentType.STRING, "Twang", GuitarType.ELECTRIC, 6);
     }
 
     @Test
@@ -46,4 +48,21 @@ public class InstrumentTest {
         assertEquals(DrumType.SNARE, drum.getDrumType());
         assertEquals(GuitarType.ELECTRIC, guitar.getGuitarType());
     }
+
+    @Test
+    public void canGetPrice() {
+        assertEquals(200, drum.getPrice(), 0.0);
+        assertEquals(500, guitar.getPrice(), 0.0);
+    }
+
+    @Test
+    public void canChangePrice() {
+        drum.setPrice(300);
+        guitar.setPrice(600);
+        assertEquals(300, drum.getPrice(), 0.0);
+        assertEquals(600, guitar.getPrice(), 0.0);
+    }
+
+
+
 }

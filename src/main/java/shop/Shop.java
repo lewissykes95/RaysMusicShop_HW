@@ -1,6 +1,7 @@
 package shop;
 
 import behaviours.ISell;
+import instruments.Guitar;
 import instruments.Instrument;
 
 import java.util.ArrayList;
@@ -9,31 +10,40 @@ public class Shop implements ISell {
 
     private String name;
 
-    private int till;
+    private double till;
 
-    private ArrayList<ISell> items;
+    private ArrayList<ISell> stock;
 
-    public Shop(String name, int till) {
+    public Shop(String name, double till) {
         this.name = name;
         this.till = till;
-        this.items = new ArrayList<>();
+        this.stock = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public int getTill() {
+    public double getTill() {
         return till;
     }
 
     public ArrayList<ISell> getItems() {
-        return items;
+        return stock;
+    }
+
+    public void addToStock(Instrument instrument) {
+        stock.add(instrument);
     }
 
 
-    @Override
-    public void calculateMarkup() {
+    public void removeFromStock(Guitar guitar){
+        stock.remove(guitar);
+    }
 
+
+    public double calculateMarkup(Instrument instrument) {
+        double buyPrice = instrument.getPrice();
+        return (buyPrice / 5) + buyPrice;
     }
 }
