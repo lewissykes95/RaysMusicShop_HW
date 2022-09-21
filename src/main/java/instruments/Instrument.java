@@ -47,7 +47,6 @@ public abstract class Instrument implements IPlay, ISell {
     @Override
     public String play() {
         return this.sound;
-
     }
 
 }

@@ -20,5 +20,4 @@ public class Guitar extends Instrument {
         return numStrings;
     }
 
-
 }
